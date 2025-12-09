@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>My Hero Academia Fan Guide - PLUS ULTRA!</title>
+	<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+	<style>
+		/* Additional inline CSS for Requirement d) */
+		.mha-custom {
+			background: linear-gradient(45deg, #1E3A8A, #DC2626);
+			color: white;
+			padding: 20px;
+			border-radius: 15px;
+			margin: 20px 0;
+			border: 3px solid #F59E0B;
+			box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+			animation: pulse 2s infinite;
+		}
+		
+		@keyframes pulse {
+			0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+			70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+			100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+		}
+		
+		.hero-card {
+			background: white;
+			border: 2px solid #1E40AF;
+			border-radius: 10px;
+			padding: 15px;
+			margin: 15px 0;
+			transition: transform 0.3s;
+		}
+		
+		.hero-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(30, 64, 175, 0.2);
+		}
+		
+		.quirk-badge {
+			display: inline-block;
+			background: #F59E0B;
+			color: #1E40AF;
+			padding: 5px 15px;
+			border-radius: 20px;
+			font-weight: bold;
+			margin: 5px;
+		}
+	</style>
+</head>
+
+<body>
+
+<!-- WELCOME MESSAGE - REQUIREMENT a) -->
+<script>
+window.onload = function() {
+    alert("PLUS ULTRA! Welcome to My Hero Academia Fan Guide! 🦸");
+};
+</script>
+
+<div id="wrapper">
+  <div id="left">
+    <h1>My Hero<br>Academia<br>Fan Guide</h1>
+    <div id="copyright">
+      <p>Student ID: 25224522 | Name: DHALEE MD SRIJON</p>
+      <p>My Hero Academia © Kohei Horikoshi</p>
+      <p>Fan-made Educational Website</p>
+    </div>
+  </div>
+  <div id="right">
+    
+    <!-- TEMPLATE LINK - REQUIREMENT e) -->
+    <div style="background: #FFF3CD; padding: 8px; margin-bottom: 5px; border: 1px solid #FFC107; text-align: center; font-size: 12px;">
+      <strong>Template Source:</strong> 
+      <a href="https://freewebsitetemplates.com/preview/travelagency/index.html" target="_blank">
+        View Original Travel Agency Template
+      </a>
+    </div>
+    
+    <div id="nav">
+      <ul>
+        <li class="selected"><a href="index.html">Home</a></li>
+        <li><a href="characters.html">Heroes</a></li>
+        <li><a href="quirks.html">Quirks</a></li>
+        <li><a href="locations.html">UA High</a></li>
+        <li><a href="villains.html">Villains</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li class="last"><a href="community.html">Community</a></li>
+      </ul>                      
+    </div>
+    <div id="body">
+      <div id="body-top">
+        <div id="body-bot">
+          
+          <!-- Custom CSS Section - Requirement d) -->
+          <div class="mha-custom">
+            <h2 style="color: #F59E0B; text-align: center; margin: 0;">PLUS ULTRA!</h2>
+            <p style="text-align: center; font-size: 14px;">Welcome to the ultimate My Hero Academia fan resource!</p>
+          </div>
+          
+          <h2><strong>Welcome</strong> to My Hero Academia World!</h2>
+          
+          <!-- INTERACTIVE JS FUNCTION - REQUIREMENT c) -->
+          <div style="background: #E8F4FD; padding: 25px; margin: 25px 0; border: 2px solid #1E40AF; border-radius: 10px;">
+            <h3 style="color: #DC2626;">🎮 Hero Power Calculator 🎮</h3>
+            <p>Calculate your potential hero power level!</p>
+            
+            <div style="margin: 15px 0;">
+              <label>Strength (1-100): </label>
+              <input type="range" id="strength" min="1" max="100" value="50" style="width: 200px;">
+              <span id="strengthValue">50</span>
+            </div>
+            
+            <div style="margin: 15px 0;">
+              <label>Speed (1-100): </label>
+              <input type="range" id="speed" min="1" max="100" value="50" style="width: 200px;">
+              <span id="speedValue">50</span>
+            </div>
+            
+            <div style="margin: 15px 0;">
+              <label>Intelligence (1-100): </label>
+              <input type="range" id="intelligence" min="1" max="100" value="50" style="width: 200px;">
+              <span id="intelligenceValue">50</span>
+            </div>
+            
+            <button onclick="calculatePower()" style="background: #DC2626; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+              CALCULATE HERO POWER!
+            </button>
+            
+            <div id="powerResult" style="margin-top: 20px; padding: 15px; background: white; border-radius: 5px; display: none;">
+              <h4 id="resultRank" style="color: #1E40AF;"></h4>
+              <p id="resultMessage"></p>
+              <div id="powerBar" style="background: #E0E0E0; height: 20px; border-radius: 10px; margin: 10px 0; overflow: hidden;">
+                <div id="powerFill" style="background: linear-gradient(to right, #4CAF50, #F59E0B); height: 100%; width: 0%; transition: width 1s;"></div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+          // Update slider values
+          document.getElementById('strength').oninput = function() {
+            document.getElementById('strengthValue').innerHTML = this.value;
+          };
+          document.getElementById('speed').oninput = function() {
+            document.getElementById('speedValue').innerHTML = this.value;
+          };
+          document.getElementById('intelligence').oninput = function() {
+            document.getElementById('intelligenceValue').innerHTML = this.value;
+          };
+          
+          function calculatePower() {
+            const strength = parseInt(document.getElementById('strength').value);
+            const speed = parseInt(document.getElementById('speed').value);
+            const intelligence = parseInt(document.getElementById('intelligence').value);
+            
+            const totalPower = strength + speed + intelligence;
+            const percentage = (totalPower / 300) * 100;
+            
+            const resultDiv = document.getElementById('powerResult');
+            const rank = document.getElementById('resultRank');
+            const message = document.getElementById('resultMessage');
+            const powerFill = document.getElementById('powerFill');
+            
+            // Determine rank
+            let rankText = "";
+            let messageText = "";
+            
+            if (percentage >= 80) {
+              rankText = "⚡ PRO HERO LEVEL! ⚡";
+              messageText = "You have the potential to be a top-ranking Pro Hero like All Might!";
+            } else if (percentage >= 60) {
+              rankText = "🎓 UA HERO COURSE LEVEL";
+              messageText = "You qualify for UA High School's Hero Course! Keep training!";
+            } else if (percentage >= 40) {
+              rankText = "📚 GENERAL COURSE LEVEL";
+              messageText = "You have good potential! Consider UA's General Studies course.";
+            } else {
+              rankText = "💪 TRAINING REQUIRED";
+              messageText = "Keep training like Midoriya! Everyone can be a hero with effort!";
+            }
+            
+            rank.innerHTML = rankText;
+            message.innerHTML = messageText + ` Your power level: ${totalPower}/300`;
+            
+            // Animate power bar
+            powerFill.style.width = "0%";
+            setTimeout(() => {
+              powerFill.style.width = percentage + "%";
+            }, 100);
+            
+            resultDiv.style.display = "block";
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+          }
+          </script>
+          
+          <p><strong>My Hero Academia</strong> is a Japanese superhero manga series written and illustrated by Kohei Horikoshi. In a world where 80% of the population has superpowers called "Quirks", follow the journey of Izuku Midoriya as he trains to become the greatest hero!</p>
+          
+          <div class="hero-card">
+            <img src="images/deku.jpg" width="150" height="150" alt="Izuku Midoriya" class="left" style="border: 3px solid #4CAF50; border-radius: 5px;" />
+            <h3>Izuku "Deku" Midoriya</h3>
+            <p>The main protagonist of My Hero Academia. Initially Quirkless, he inherits "One For All" from All Might and enrolls in UA High School to become a professional hero.</p>
+            <p><strong>Quirk:</strong> <span class="quirk-badge">One For All</span></p>
+            <p><strong>Hero Name:</strong> Deku</p>
+          </div>
+          
+          <div class="clear"></div>
+          
+          <div class="hero-card">
+            <img src="images/bakugo.jpg" width="150" height="150" alt="Katsuki Bakugo" class="left" style="border: 3px solid #FF5722; border-radius: 5px;" />
+            <h3>Katsuki Bakugo</h3>
+            <p>Deku's childhood friend and rival. Known for his explosive personality and powerful Quirk, he aims to become the number one hero.</p>
+            <p><strong>Quirk:</strong> <span class="quirk-badge">Explosion</span></p>
+            <p><strong>Hero Name:</strong> Great Explosion Murder God Dynamight</p>
+          </div>
+          
+          <div class="clear"></div>
+          
+          <h3>About This Website</h3>
+          <p>This fan website is dedicated to all things My Hero Academia. Here you'll find:</p>
+          <ul>
+            <li>Complete character profiles</li>
+            <li>Quirk database and analysis</li>
+            <li>Episode and season guides</li>
+            <li>UA High School information</li>
+            <li>Villain profiles and analysis</li>
+            <li>Fan community discussions</li>
+          </ul>
+          
+          <h3>Recent Updates</h3>
+          <p><strong>Final season is here now. </strong>Deku will fight All for One but will he be able to beat them? </p>
+          <p><strong>Make sure to watch the new season </strong></p>
+          <p><strong>Manga Updates:</strong> Follow the final arc of the manga series!</p>
+          
+          <div class="clear"></div>
+
+          <div class="body-hr"> </div>
+          
+          <div id="footer">
+            <div id="footer-1">
+              Top <strong>Heroes</strong>
+            </div>
+          
+            <div id="footer-2">
+              <img src="images/allmight.png" width="60" height="60" alt="All Might" class="left" style="border-radius: 50%;" />
+              All Might<br>
+              Symbol of Peace
+            </div>
+          
+            <div id="footer-3">
+              <img src="images/endeavor.png" width="60" height="60" alt="Endeavor" class="left" style="border-radius: 50%;" />
+              Endeavor<br>
+              #1 Hero
+            </div>
+            
+            <div class="clear"> </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
